@@ -228,3 +228,4 @@ class MST_Titan_Block_Main extends Mage_Core_Block_Template {
 		return $html;
 	}
 }
+/* tét */
