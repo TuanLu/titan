@@ -7,7 +7,7 @@ var/*
 errors/*
 includes/*
 shell/*
-pkinfo/*
+pkginfo/*
 js/*
 lib/*
 media/*
