@@ -1,0 +1,22 @@
+
+<div class="cart">
+    <div class="page-title title-buttons title_popup">
+		<?php if($this->getContinueShoppingUrl()): ?>
+			<button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="jQuery( '#bac-overlay' ).trigger( 'click' );"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+		<?php endif; ?>	
+        <h1><?php echo $this->__('Shopping Cart') ?></h1>
+        
+    </div>
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <?php echo $this->getChildHtml('form_before') ?>
+    <p>
+	 <?php echo $this->__('You have no items in your shopping cart.'); ?>
+    </p>
+    <br>
+	<div class="box-button">
+		<?php if($this->getContinueShoppingUrl()): ?>
+			<button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue1" onclick="jQuery( '#bac-overlay' ).trigger( 'click' );"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+		<?php endif; ?>	
+		
+    </div>
+</div>

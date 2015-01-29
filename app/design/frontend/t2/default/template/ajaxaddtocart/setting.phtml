@@ -1,0 +1,35 @@
+<?php
+/**
+ * MageBay Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.MageBay.com/MST-LICENSE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento community edition
+ * MageBay does not guarantee correct work of this extension
+ * on any other Magento edition except Magento community edition.
+ * MageBay does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   MST
+ * @package    MST_Ajaxaddtocart
+ * @version    3.1.2
+ * @copyright  Copyright (c) 2010-2012 MageBay Co. (http://www.MageBay.com)
+ * @license    http://ecommerce.MageBay.com/MST-LICENSE.txt
+ */
+?>
+<?php /*<input type="hidden" name="flyefect" value="<?php echo Mage::getStoreConfig('ajaxaddtocart/general/optionefect') ?>" />*/?>
+<input type="hidden" name="versionmagento" value="<?php echo Mage::getVersion(); ?>" />
+<input type="hidden" name="progressanimation" value="<?php echo Mage::getStoreConfig('ajaxaddtocart/general/optionefect') ?>" />
+<input type="hidden" name="confirmblock" value="<?php echo Mage::getStoreConfig('ajaxaddtocart/general/confirmblock') ?>" />
+<input type="hidden" name="dropdowncart" value="<?php echo Mage::getStoreConfig('ajaxaddtocart/general/dropdowncart') ?>" />
+<input type="hidden" name="flyimageto" value="<?php echo Mage::getStoreConfig('ajaxaddtocart/general/flyimageto') ?>" />
+<input type="hidden" name="ajaxloader" value="<?php echo $this->getSkinUrl('ajaxaddtocart/images/ajaxloader.gif') ?>" />

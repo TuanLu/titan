@@ -1,0 +1,37 @@
+<?php
+/**
+ * MageBay Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.MageBay.com/MST-LICENSE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento community edition
+ * MageBay does not guarantee correct work of this extension
+ * on any other Magento edition except Magento community edition.
+ * MageBay does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   MST
+ * @package    MST_Ajaxaddtocart
+ * @version    3.1.2
+ * @copyright  Copyright (c) 2010-2012 MageBay Co. (http://www.MageBay.com)
+ * @license    http://ecommerce.MageBay.com/MST-LICENSE.txt
+ */
+?><div id="ajaxaddtocart-progress" class="ajaxaddtocart-box-hide">
+    <?php if (Mage::getStoreConfig('ajaxaddtocart/general/uploadajaxloadingimage')): ?>
+        <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'ajaxaddtocart/' . Mage::getStoreConfig('ajaxaddtocart/general/uploadajaxloadingimage') ?>" alt=""/>
+    <?php else: ?>
+        <img src="<?php echo $this->getSkinUrl('ajaxaddtocart/images/loading.gif'); ?>" alt=""/>
+    <?php endif; ?>
+	<img class="newload" src="<?php echo $this->getSkinUrl('ajaxaddtocart/images/ajax-loader.gif'); ?>" alt=""/>
+    <p><?php echo $this->__('please wait...') ?></p>
+</div>
+<input type="hidden" value="<?php echo $this->getUrl() ?>" id="mst_current_url"/>

@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+<!--
+Custom layout, loads most of the pages
+-->
+<default>
+	<reference name="before_body_end">
+		<block type="page/html_head" name="extra_js" as="extraJs" after="-" template="page/html/footer/footer_js.phtml">
+		<!-- Le javascript
+		================================================== --> 
+ 
+		<!-- Placed at the end of the document so the pages load faster --> 
+
+		
+		<action method="addItem"><type>skin_js</type><name>assets/bootstrap/js/bootstrap.min.js</name></action>
+		<!-- <action method="addItem"><type>skin_js</type><name>assets/js/bootstrap-select.min.js</name></action> -->
+		<action method="addItem"><type>skin_js</type><name>assets/js/chosen.jquery.min.js</name></action>	
+		<!-- include jqueryCycle plugin --> 
+		<action method="addItem"><type>skin_js</type><name>assets/js/jquery.cycle2.min.js</name></action>
+		<!-- include easing plugin --> 
+		<action method="addItem"><type>skin_js</type><name>assets/js/jquery.easing.1.3.js</name></action>
+		<!-- include  parallax plugin --> 
+		<action method="addItem"><type>skin_js</type><name>assets/js/jquery.parallax-1.1.js</name></action>
+		<!-- optionally include helper plugins --> 
+		<action method="addItem"><type>skin_js</type><name>assets/js/helper-plugins/jquery.mousewheel.min.js</name></action>
+		<!-- include mCustomScrollbar plugin //Custom Scrollbar  --> 
+		<action method="addItem"><type>skin_js</type><name>assets/js/jquery.mCustomScrollbar.js</name></action>
+		<!-- include checkRadio plugin //Custom check & Radio  --> 
+		<action method="addItem"><type>skin_js</type><name>assets/js/ion-checkRadio/ion.checkRadio.min.js</name></action>
+		<!-- include grid.js // for equal Div height  --> 
+		<action method="addItem"><type>skin_js</type><name>assets/js/grids.js</name></action>
+		<!-- include carousel slider plugin  --> 
+		<action method="addItem"><type>skin_js</type><name>assets/js/owl.carousel.min.js</name></action>
+		<!-- include touchspin.js // touch friendly input spinner component   --> 
+		<action method="addItem"><type>skin_js</type><name>assets/js/bootstrap.touchspin.js</name></action>
+		<!-- include custom script for site  --> 
+		<action method="addItem"><type>skin_js</type><name>assets/js/script.js</name></action>	
+		<action method="addItem"><type>skin_js</type><name>assets/js/menu.js</name></action>	
+
+		</block>
+	</reference>
+	<reference name="head">
+	    <action method="addCss"><stylesheet>assets/bootstrap/css/bootstrap.min.css</stylesheet></action>
+		<!-- Custom styles for this template -->
+		<!-- <action method="addCss"><stylesheet>assets/css/bootstrap-select.css</stylesheet></action> -->
+		
+		<action method="addCss"><stylesheet>assets/css/chosen.css</stylesheet></action>
+		<action method="addCss"><stylesheet>assets/css/style.css</stylesheet></action>
+		<action method="addCss"><stylesheet>assets/css/layout.css</stylesheet></action>
+		<!-- css3 animation effect for this template -->
+		<action method="addCss"><stylesheet>assets/css/animate.min.css</stylesheet></action>
+		<!-- styles needed by carousel slider -->
+		<action method="addCss"><stylesheet>assets/css/owl.carousel.css</stylesheet></action>
+		<action method="addCss"><stylesheet>assets/css/owl.theme.css</stylesheet></action>
+		<!-- styles needed by minimalect -->
+		<!-- <action method="addCss"><stylesheet>assets/css/jquery.minimalect.min.css</stylesheet></action> -->
+		<!-- styles needed by checkRadio -->
+		<action method="addCss"><stylesheet>assets/css/menu.css</stylesheet></action>
+		<action method="addCss"><stylesheet>assets/css/ion.checkRadio.css</stylesheet></action>
+		<action method="addCss"><stylesheet>assets/css/ion.checkRadio.cloudy.css</stylesheet></action>
+
+		<!-- styles needed by mCustomScrollbar -->
+		<action method="addCss"><stylesheet>assets/css/jquery.mCustomScrollbar.css</stylesheet></action>
+		<!-- Just for debugging purposes. -->
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<action method="addItem"><type>skin_js</type><name>assets/js/html5shiv.js</name><params/><if>lt IE 9</if></action>
+		<action method="addItem"><type>skin_js</type><name>assets/js/respond.min.js</name><params/><if>lt IE 9</if></action>
+		<action method="addItem"><type>js</type><name>lib/ds-sleight.js</name><params/><if>lt IE 7</if></action>
+		<action method="addItem"><type>skin_js</type><name>js/ie6.js</name><params/><if>lt IE 7</if></action>
+	</reference>
+	<reference name="left">
+		<block type="titan/main" name="adv_left" as="adv_left" after="-" translate="label" template="page/html/left.phtml" />
+	</reference>
+	<reference name="right">
+		<block type="titan/main" name="adv_right" as="adv_right" after="-" translate="label" template="page/html/right.phtml" />
+	</reference>
+	<reference name="before_body_end">
+		<block type="core/template" name="settings" template="settings/settings.phtml" />
+	</reference>
+</default>
+<cms_index_index>
+	<reference name="extra_js">
+		<!-- include custom script for only homepage  --> 
+		<action method="addItem"><type>skin_js</type><name>assets/js/home.js</name></action>	
+	</reference>
+	<reference name="before_main_content">
+		<block type="titan/main" name="block-1" as="block1" translate="label" template="page/block-1.phtml">
+			<label>Block 1</label>
+		</block>
+		<block type="titan/main" name="block-2" as="block2" translate="label" template="page/block-2.phtml">
+			<label>Block 2</label>
+		</block>
+		<block type="titan/main" name="block-3" as="block3" translate="label" template="page/block-3.phtml">
+			<label>Block 3</label>
+		</block>	
+	</reference>
+	<reference name="after_main_content">
+		<block type="titan/main" name="block-4" as="block4" translate="label" template="page/block-4.phtml">
+			<label>Block 4</label>
+		</block>
+		<block type="titan/main" name="block-5" as="block5" translate="label" template="page/block-5.phtml">
+			<label>Block 5</label>
+		</block>
+		<block type="titan/main" name="block-6" as="block6" translate="label" template="page/block-6.phtml">
+			<label>Block 6</label>
+		</block>
+	</reference>
+	
+</cms_index_index>
+<catalog_product_view>
+	<!--<reference name="head">
+		 
+		<action method="addCss"><stylesheet>assets/css/smoothproducts.default.css</stylesheet></action>
+	</reference>
+	<reference name="extra_js">
+		 
+		<action method="addItem"><type>skin_js</type><name>assets/js/smoothproducts.default.js</name></action>	
+	</reference>-->
+</catalog_product_view>
+<checkout_onepage_index>
+	<reference name="head">
+		<action method="addCss"><stylesheet>assets/css/onepagecheckout.css</stylesheet></action>
+	</reference>
+</checkout_onepage_index>
+</layout>

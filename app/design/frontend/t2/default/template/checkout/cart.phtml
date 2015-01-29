@@ -1,0 +1,126 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Shopping cart template
+ *
+ * @var $this Mage_Checkout_Block_Cart
+ */
+?>
+<?php $_priceDisplay = ($this->helper('tax')->displayCartBothPrices()) ? 'display-both-prices' : 'display-single-price'; ?>
+<div class="">
+    <div class="col-lg-9 col-md-9 col-sm-7">
+      <h1 class="section-title-inner"><span><i class="glyphicon glyphicon-shopping-cart"></i> <?php echo $this->__('Shopping Cart') ?> </span></h1>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-5 rightSidebar">
+      <h4 class="caps"><a href="<?php echo $this->getUrl();?>"><i class="fa fa-chevron-left"></i> <?php echo $this->__('Back to shopping');?> </a></h4>
+    </div>
+</div><!--/.row-->
+<div class="">
+    <div class="col-lg-9 col-md-9 col-sm-7">
+      <div class="row userInfo">
+        <div class="col-xs-12 col-sm-12">
+		<?php if($this->getMessagesBlock()->getGroupedHtml()) { ?>
+		<div class="alert alert-warning fade in" role="alert">
+			<button class="close" data-dismiss="alert" type="button">
+			<span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+		<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+		</div>
+		<?php } ?>
+		<?php echo $this->getChildHtml('form_before') ?>
+		<form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
+		<?php echo $this->getBlockHtml('formkey'); ?>
+          <div class="cartContent w100">
+            <table class="cartTable table-responsive" style="width:100%">
+              <tbody>
+              
+                <tr class="CartProduct cartTableHeader">
+                  <td class="hidden-xs" style="width:15%"  > <?php echo $this->__('Product') ?> </td>
+                  <td style="width:40%"  ><?php echo $this->__('Details') ?></td>
+                  <td style="width:10%"  class="delete">&nbsp;</td>
+                  <td class="hidden-xs" style="width:10%" ><?php echo $this->__('Qty') ?></td>
+                  <td style="width:10%" ><?php echo $this->__('Price') ?></td>
+                  <td style="width:15%" ><?php echo $this->__('Subtotal') ?></td>
+                </tr>
+                <?php foreach($this->getItems() as $_item): ?>
+					<?php echo $this->getItemHtml($_item) ?>
+				<?php endforeach ?>
+                
+                 
+              </tbody>
+            </table>
+          </div>
+          <!--cartContent-->
+          
+          <div class="cartFooter w100">
+            <div class="box-footer">
+              <div class="pull-left"> <a href="<?php echo $this->getContinueShoppingUrl() ?>" title="<?php echo $this->__('Back to Shop') ?>" class="btn btn-default"> <i class="fa fa-arrow-left"></i> &nbsp;  <?php echo $this->__('Back to Shop') ?> </a> </div>
+              <div class="pull-right">
+				<button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Cart'); ?>" class="button btn-update btn btn-default"><span><span><i class="fa fa-undo"></i> &nbsp; <?php echo $this->__('Update Shopping Cart'); ?></span></span></button>
+              </div>
+            </div>
+          </div> <!--/ cartFooter --> 
+        </form>
+        </div>
+      </div>
+      <!--/row end--> 
+      
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-5 rightSidebar">
+      <div class="contentBox" >
+        <div class="w100 costDetails">
+          <?php echo $this->getChildHtml('totals'); ?>
+            <?php if(!$this->hasError()): ?>
+            <ul class="checkout-types">
+            <?php foreach ($this->getMethods('methods') as $method): ?>
+                <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+                <li><?php echo $methodHtml; ?></li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            </ul>
+            <?php endif; ?>
+        </div>
+      </div>
+      <!-- End popular --> 
+      
+    </div>
+    <!--/rightSidebar--> 
+    
+  </div><!--/row-->
+<div class="col-lg-9 col-md-9 col-sm-7">
+	<div class="row">
+		<div class="col-md-6 col-xs-12">
+		<?php echo $this->getChildHtml('crosssell') ?>
+		</div>
+		<div class="col-md-6 col-xs-12">
+			<?php echo $this->getChildHtml('checkout.cart.extra') ?>
+			<?php if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
+		</div>
+	</div> 
+</div>
+  
+ 

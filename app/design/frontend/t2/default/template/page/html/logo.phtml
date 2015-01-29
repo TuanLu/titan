@@ -1,0 +1,23 @@
+<?php 
+$config = $this->helper("titan/config");
+//Get Logo Type : $config->getLogoType();
+//Get Logo Image : $config->getLogo();
+//Get Logo text : $config->getLogoText();
+//Get Slogan : $config->getSlogan();
+?>
+<h1 class="logo">
+<?php if($config->getLogoType()=='text'){ 
+// Logo Type: Text
+?>
+<a href="<?php echo $this->getUrl('') ?>" title="<?php echo $config->getLogoText(); ?>" class="logo-text navbar-brand"><?php echo $config->getLogoText();?></a>
+<?php }elseif($config->getLogoType()=='image'){ 
+// Logo Type: Image
+?>
+<a href="<?php echo $this->getUrl('') ?>" title="<?php echo $config->getLogoText(); ?>" class="logo-image navbar-brand"><img src="<?php echo $config->getLogo(); ?>" alt="<?php echo $config->getLogoText(); ?>" /></a>
+<?php }else { 
+// Logo Type: Default Magento Settings
+?>
+<a href="<?php echo $this->getUrl('') ?>" title="<?php echo Mage::getStoreConfig('design/header/logo_alt'); ?>" class="logo-default navbar-brand"><img src="<?php echo Mage::getStoreConfig('design/header/logo_src'); ?>" alt="<?php echo Mage::getStoreConfig('design/header/logo_alt'); ?>" /></a>
+<?php } ?>
+<?php if($config->getSlogan()){ echo '<strong>'.$config->getSlogan().'</strong>';} ?>
+</h1>

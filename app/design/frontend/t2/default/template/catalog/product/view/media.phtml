@@ -1,0 +1,90 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_modern
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product media data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ */
+?>
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+	$style = $this->helper("titan/config")->getMediaStyle();
+	/* Get Image Size for Zoom in */
+	$_lgWidth = $this->helper("titan/config")->getLargeImageWidth();
+	$_lgHeight = $this->helper("titan/config")->getLargeImageHeight();
+	/* Get Main Image Size */
+	$_imgWidth = $this->helper("titan/config")->getMainWidth();
+	$_imgHeight = $this->helper("titan/config")->getMainHeight();
+?>
+<?php if($style == 1){  
+/* Vertical Style */ ?>
+<div class="main-image sp-wrap col-lg-12 no-padding "> 
+		<?php
+            $i=0;
+            foreach ($this->getGalleryImages() as $_image):
+                $_imageUrl = $this->helper('catalog/image')
+                                  ->init($_product, 'image', $_image->getFile())
+                                  ->keepFrame(false)
+                                  ->constrainOnly(true);
+        ?><a href="<?php echo $_imageUrl->resize($_lgWidth,$_lgHeight); ?>"><img src="<?php echo $_imageUrl->resize($_imgWidth,$_imgHeight); ?>" class="img-responsive" alt="<?php echo $this->escapeHtml($_image->getLabel()) ?>"></a> 
+        <?php
+            $i++;
+            endforeach;
+        ?>
+</div>
+<link media="all" href="<?php echo $this->getSkinUrl('assets/css/smoothproducts.basic.css');?>" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('assets/js/smoothproducts.basic.js');?>"></script>
+<script type="text/javascript">
+		/* wait for images to load */
+		jQuery(window).load( function() {
+			jQuery('.sp-wrap').smoothproducts();
+		});
+</script>
+
+<?php } else { 
+/* Horiziontal Style */ ?>
+
+<div class="main-image sp-wrap col-lg-12 no-padding style2 "> 
+		<?php
+            $i=0;
+            foreach ($this->getGalleryImages() as $_image):
+                $_imageUrl = $this->helper('catalog/image')
+                                  ->init($_product, 'image', $_image->getFile())
+                                  ->keepFrame(false)
+                                  ->constrainOnly(true);
+        ?><a href="<?php echo $_imageUrl->resize($_lgWidth,$_lgHeight); ?>"><img src="<?php echo $_imageUrl->resize($_imgWidth,$_imgHeight); ?>" class="img-responsive" alt="<?php echo $this->escapeHtml($_image->getLabel()) ?>"></a> 
+        <?php
+            $i++;
+            endforeach;
+        ?>
+</div>
+
+<link media="all" href="<?php echo $this->getSkinUrl('assets/css/smoothproducts.default.css');?>" type="text/css" rel="stylesheet">
+<script src="<?php echo $this->getSkinUrl('assets/js/smoothproducts.default.js'); ?>" type="text/javascript"></script>
+<?php 
+	}?>

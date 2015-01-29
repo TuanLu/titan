@@ -1,0 +1,278 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+			<action method="addJs" ifconfig="ajaxaddtocart/general/enabled" ><script>varien/configurable.js</script></action>
+            <action method="addJs" ifconfig="ajaxaddtocart/general/enabled">
+                <script>varien/product.js</script>
+            </action>
+			<action method="addItem" ifconfig="ajaxaddtocart/general/enabled">
+                <type>skin_js</type>
+                <name>js/bundle.js</name>
+            </action>
+            <action method="addItem" ifconfig="ajaxaddtocart/general/enabled">
+                <type>js_css</type>
+                <name>calendar/calendar-win2k-1.css</name>
+                <params/>                
+            </action>
+            <action method="addItem" ifconfig="ajaxaddtocart/general/enabled" >
+                <type>js</type>
+                <name>calendar/calendar.js</name>                
+            </action>
+            <action method="addItem" ifconfig="ajaxaddtocart/general/enabled">
+                <type>js</type>
+                <name>calendar/calendar-setup.js</name>                
+            </action>			
+			
+			<action method="addItem" ifconfig="ajaxaddtocart/general/loadjquery"><type>skin_js</type><name>ajaxaddtocart/js/jquery-1.11.1.js</name></action>
+			<action method="addItem" ifconfig="ajaxaddtocart/general/loadjquery"><type>skin_js</type><name>ajaxaddtocart/js/noConflict.js</name></action>
+			<action method="addItem" ifconfig="ajaxaddtocart/general/enabled"><type>skin_js</type><name>ajaxaddtocart/js/jquery_easing.js</name></action>
+			<action method="addItem" ifconfig="ajaxaddtocart/general/enabled"><type>skin_js</type><name>ajaxaddtocart/js/mst_custom.js</name></action>
+                                              
+            <action method="addCss" ifconfig="ajaxaddtocart/general/enabled" ><stylesheet>ajaxaddtocart/css/styles.css</stylesheet></action>
+            <action method="addItem" ifconfig="ajaxaddtocart/general/enabled" ><type>skin_css</type><name>ajaxaddtocart/css/ie7-style.css</name><params/><if>IE 7</if></action>
+			
+        </reference>	
+        <reference name="before_body_end">			
+            <block type="core/template" template="ajaxaddtocart/overlay.phtml" name="mst.ajaxaddtocart.overlay" />
+            <block type="core/template" template="ajaxaddtocart/setting.phtml" name="mst.ajaxaddtocart.setting" />
+            <block type="core/template" template="ajaxaddtocart/options-container.phtml" name="mst.ajaxaddtocart.container" />
+            <block type="core/template" template="ajaxaddtocart/progress.phtml" name="mst.ajaxaddtocart.progress" />
+            <block type="core/template" template="ajaxaddtocart/confirm/addproduct.phtml" name="mst.ajaxaddtocart.confirm.addproduct" />   
+            <block type="checkout/cart_sidebar" name="cart_dropdowncart1" template="ajaxaddtocart/checkout/cart/dropdowncartcustom.phtml" before="-">
+                <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions" translate="label" module="checkout">
+                    <label>Shopping Cart Sidebar Extra Actions</label>
+                </block>
+            </block>				
+        </reference>	
+		<reference name="header">			
+            <block type="checkout/cart_sidebar" name="cart_dropdowncart" template="ajaxaddtocart/checkout/cart/dropdowncart.phtml" before="-">
+                <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions" translate="label" module="checkout">
+                    <label>Shopping Cart Sidebar Extra Actions</label>
+                </block>
+            </block>						
+        </reference>
+    </default>
+    <ajaxaddtocart_ajax_cart>
+		<label>Shopping Cart</label>
+        <!--remove name="right"/>
+        <remove name="left"/-->
+        <!-- Mage_Checkout -->
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+		<reference name="content">
+			<block type="checkout/cart" name="checkout.cart">
+				<action method="setCartTemplate"><value>ajaxaddtocart/checkout/cart.phtml</value></action>
+				<action method="setEmptyTemplate"><value>ajaxaddtocart/checkout/cart/noItems.phtml</value></action>
+				<action method="chooseTemplate"/>
+				<action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>ajaxaddtocart/checkout/cart/item/default.phtml</template></action>
+				<action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>ajaxaddtocart/checkout/cart/item/default.phtml</template></action>
+				<action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>ajaxaddtocart/checkout/cart/item/default.phtml</template></action>
+				<action method="addItemRender"><type>bundle</type><block>bundle/checkout_cart_item_renderer</block><template>ajaxaddtocart/checkout/cart/item/default.phtml</template></action>
+				<!--action method="addItemRender"><type>giftcard</type><block>enterprise_giftcard/checkout_cart_item_renderer</block><template>checkout/cart/item/default.phtml</template-->
+
+				<block type="core/text_list" name="checkout.cart.top_methods" as="top_methods" translate="label">
+					<label>Payment Methods Before Checkout Button</label>
+					<block type="checkout/onepage_link" name="checkout.cart.methods.onepage" template="checkout/onepage/link.phtml"/>
+				</block>
+
+				<block type="page/html_wrapper" name="checkout.cart.form.before" as="form_before" translate="label">
+					<label>Shopping Cart Form Before</label>
+				</block>
+
+				<block type="core/text_list" name="checkout.cart.methods" as="methods" translate="label">
+					<label>Payment Methods After Checkout Button</label>
+					<block type="checkout/onepage_link" name="checkout.cart.methods.onepage" template="checkout/onepage/link.phtml"/>
+					<block type="checkout/multishipping_link" name="checkout.cart.methods.multishipping" template="checkout/multishipping/link.phtml"/>
+				</block>
+
+				<block type="checkout/cart_coupon" name="checkout.cart.coupon" as="coupon" template="ajaxaddtocart/checkout/cart/coupon.phtml"/>
+				<block type="checkout/cart_shipping" name="checkout.cart.shipping" as="shipping" template="checkout/cart/shipping.phtml"/>
+				<block type="checkout/cart_crosssell" name="checkout.cart.crosssell" as="crosssell" template="checkout/cart/crosssell.phtml"/>
+
+				<block type="checkout/cart_totals" name="checkout.cart.totals" as="totals" template="checkout/cart/totals.phtml"/>
+			</block>		
+		</reference>
+    </ajaxaddtocart_ajax_cart>   
+	<ajaxaddtocart_ajax_updatepost>
+		<label>Shopping Cart</label>
+        <!--remove name="right"/>
+        <remove name="left"/-->
+        <!-- Mage_Checkout -->
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+		<reference name="content">
+			<block type="checkout/cart" name="checkout.cart">
+				<action method="setCartTemplate"><value>ajaxaddtocart/checkout/cart.phtml</value></action>
+				<action method="setEmptyTemplate"><value>ajaxaddtocart/checkout/cart/noItems.phtml</value></action>
+				<action method="chooseTemplate"/>
+				<action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>ajaxaddtocart/checkout/cart/item/default.phtml</template></action>
+				<action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>ajaxaddtocart/checkout/cart/item/default.phtml</template></action>
+				<action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>ajaxaddtocart/checkout/cart/item/default.phtml</template></action>
+				<action method="addItemRender"><type>bundle</type><block>bundle/checkout_cart_item_renderer</block><template>ajaxaddtocart/checkout/cart/item/default.phtml</template></action>
+				<!--action method="addItemRender"><type>giftcard</type><block>enterprise_giftcard/checkout_cart_item_renderer</block><template>checkout/cart/item/default.phtml</template-->
+
+				<block type="core/text_list" name="checkout.cart.top_methods" as="top_methods" translate="label">
+					<label>Payment Methods Before Checkout Button</label>
+					<block type="checkout/onepage_link" name="checkout.cart.methods.onepage" template="checkout/onepage/link.phtml"/>
+				</block>
+
+				<block type="page/html_wrapper" name="checkout.cart.form.before" as="form_before" translate="label">
+					<label>Shopping Cart Form Before</label>
+				</block>
+
+				<block type="core/text_list" name="checkout.cart.methods" as="methods" translate="label">
+					<label>Payment Methods After Checkout Button</label>
+					<block type="checkout/onepage_link" name="checkout.cart.methods.onepage" template="checkout/onepage/link.phtml"/>
+					<block type="checkout/multishipping_link" name="checkout.cart.methods.multishipping" template="checkout/multishipping/link.phtml"/>
+				</block>
+
+				<block type="checkout/cart_coupon" name="checkout.cart.coupon" as="coupon" template="ajaxaddtocart/checkout/cart/coupon.phtml"/>
+				<block type="checkout/cart_shipping" name="checkout.cart.shipping" as="shipping" template="checkout/cart/shipping.phtml"/>
+				<block type="checkout/cart_crosssell" name="checkout.cart.crosssell" as="crosssell" template="checkout/cart/crosssell.phtml"/>
+
+				<block type="checkout/cart_totals" name="checkout.cart.totals" as="totals" template="checkout/cart/totals.phtml"/>
+			</block>		
+		</reference>
+    </ajaxaddtocart_ajax_updatepost>
+	<ajaxaddtocart_coupon_updatepost>
+		<label>Shopping Cart</label>
+        <!--remove name="right"/>
+        <remove name="left"/-->
+        <!-- Mage_Checkout -->
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+		<reference name="content">
+			<block type="checkout/cart" name="checkout.cart">
+				<action method="setCartTemplate"><value>checkout/cart.phtml</value></action>
+				<action method="setEmptyTemplate"><value>checkout/cart/noItems.phtml</value></action>
+				<action method="chooseTemplate"/>
+				<action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/item/default.phtml</template></action>
+				<action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/item/default.phtml</template></action>
+				<action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/item/default.phtml</template></action>
+				<action method="addItemRender"><type>bundle</type><block>bundle/checkout_cart_item_renderer</block><template>checkout/cart/item/default.phtml</template></action>
+				<!--action method="addItemRender"><type>giftcard</type><block>enterprise_giftcard/checkout_cart_item_renderer</block><template>checkout/cart/item/default.phtml</template-->
+
+				<block type="core/text_list" name="checkout.cart.top_methods" as="top_methods" translate="label">
+					<label>Payment Methods Before Checkout Button</label>
+					<block type="checkout/onepage_link" name="checkout.cart.methods.onepage" template="checkout/onepage/link.phtml"/>
+				</block>
+
+				<block type="page/html_wrapper" name="checkout.cart.form.before" as="form_before" translate="label">
+					<label>Shopping Cart Form Before</label>
+				</block>
+
+				<block type="core/text_list" name="checkout.cart.methods" as="methods" translate="label">
+					<label>Payment Methods After Checkout Button</label>
+					<block type="checkout/onepage_link" name="checkout.cart.methods.onepage" template="checkout/onepage/link.phtml"/>
+					<block type="checkout/multishipping_link" name="checkout.cart.methods.multishipping" template="checkout/multishipping/link.phtml"/>
+				</block>
+
+				<block type="checkout/cart_coupon" name="checkout.cart.coupon" as="coupon" template="ajaxaddtocart/checkout/cart/coupon.phtml"/>
+				<block type="checkout/cart_shipping" name="checkout.cart.shipping" as="shipping" template="checkout/cart/shipping.phtml"/>
+				<block type="checkout/cart_crosssell" name="checkout.cart.crosssell" as="crosssell" template="checkout/cart/crosssell.phtml"/>
+
+				<block type="checkout/cart_totals" name="checkout.cart.totals" as="totals" template="checkout/cart/totals.phtml"/>
+			</block>		
+		</reference>
+    </ajaxaddtocart_coupon_updatepost>	
+	<ajaxaddtocart_coupon_cart>
+		<label>Shopping Cart</label>
+        <!--remove name="right"/>
+        <remove name="left"/-->
+        <!-- Mage_Checkout -->
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+		<reference name="content">
+			<block type="checkout/cart" name="checkout.cart">
+				<action method="setCartTemplate"><value>checkout/cart.phtml</value></action>
+				<action method="setEmptyTemplate"><value>checkout/cart/noItems.phtml</value></action>
+				<action method="chooseTemplate"/>
+				<action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/item/default.phtml</template></action>
+				<action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/item/default.phtml</template></action>
+				<action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/item/default.phtml</template></action>
+				<action method="addItemRender"><type>bundle</type><block>bundle/checkout_cart_item_renderer</block><template>checkout/cart/item/default.phtml</template></action>
+				<!--action method="addItemRender"><type>giftcard</type><block>enterprise_giftcard/checkout_cart_item_renderer</block><template>checkout/cart/item/default.phtml</template-->
+
+				<block type="core/text_list" name="checkout.cart.top_methods" as="top_methods" translate="label">
+					<label>Payment Methods Before Checkout Button</label>
+					<block type="checkout/onepage_link" name="checkout.cart.methods.onepage" template="checkout/onepage/link.phtml"/>
+				</block>
+
+				<block type="page/html_wrapper" name="checkout.cart.form.before" as="form_before" translate="label">
+					<label>Shopping Cart Form Before</label>
+				</block>
+
+				<block type="core/text_list" name="checkout.cart.methods" as="methods" translate="label">
+					<label>Payment Methods After Checkout Button</label>
+					<block type="checkout/onepage_link" name="checkout.cart.methods.onepage" template="checkout/onepage/link.phtml"/>
+					<block type="checkout/multishipping_link" name="checkout.cart.methods.multishipping" template="checkout/multishipping/link.phtml"/>
+				</block>
+
+				<block type="checkout/cart_coupon" name="checkout.cart.coupon" as="coupon" template="ajaxaddtocart/checkout/cart/coupon.phtml"/>
+				<block type="checkout/cart_shipping" name="checkout.cart.shipping" as="shipping" template="checkout/cart/shipping.phtml"/>
+				<block type="checkout/cart_crosssell" name="checkout.cart.crosssell" as="crosssell" template="checkout/cart/crosssell.phtml"/>
+
+				<block type="checkout/cart_totals" name="checkout.cart.totals" as="totals" template="checkout/cart/totals.phtml"/>
+			</block>		
+		</reference>
+    </ajaxaddtocart_coupon_cart>
+    <ajaxaddtocart_configurable_options>
+        <reference name="content">
+            <block type="catalog/product_view" name="ajaxaddtocart.configurable.options"
+                   template="ajaxaddtocart/configurable_options.phtml" as="ajaxaddtocart.configurable.options">
+                <block type="core/template_facade" name="product.info.container1" as="container1">
+                    <action method="setDataByKey">
+                        <key>alias_in_layout</key>
+                        <value>container1</value>
+                    </action>
+                    <action method="setDataByKeyFromRegistry">
+                        <key>options_container</key>
+                        <key_in_registry>product</key_in_registry>
+                    </action>
+                    <action method="append">
+                        <block>product.info.options.wrapper</block>
+                    </action>
+                    <action method="append">
+                        <block>product.info.options.wrapper.bottom</block>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </ajaxaddtocart_configurable_options>	
+    <ajaxaddtocart_bundle_options>
+        <reference name="content">
+            <block type="bundle/catalog_product_view_type_bundle" name="product.info.bundle" as="product_type_data" template="bundle/catalog/product/view/type/bundle.phtml">
+                <action method="addPriceBlockType"><type>bundle</type><block>bundle/catalog_product_price</block><template>bundle/catalog/product/price.phtml</template></action>
+                <block type="bundle/catalog_product_price" name="bundle.prices" as="bundle_prices" template="bundle/catalog/product/view/price.phtml">
+                    <action method="setMAPTemplate"><tmpl>catalog/product/price_msrp_item.phtml</tmpl></action>
+                </block>
+            </block>
+        </reference>
+    </ajaxaddtocart_bundle_options>	
+    <ajaxaddtocart_grouped_options translate="label" module="catalog">
+        <reference name="content">
+            <block type="catalog/product_view" name="ajaxaddtocart.grouped.options"
+                   template="ajaxaddtocart/grouped_options.phtml" as="ajaxaddtocart.grouped.options">
+                <block type="catalog/product_view_type_grouped" name="grouped.options"
+                       as="grouped.options" template="catalog/product/view/type/grouped.phtml">
+                    <block type="core/text_list" name="product.info.grouped.extra" as="product_type_data_extra"
+                           translate="label">
+                        <label>Product Extra Info</label>
+                    </block>
+                </block>
+                <block type="catalog/product_view" name="product.info.addtocart" as="addtocart" template="catalog/product/view/addtocart.phtml"/>
+            </block>
+        </reference>
+    </ajaxaddtocart_grouped_options>	
+</layout>
