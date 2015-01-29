@@ -17,9 +17,19 @@ introtext{font-size:14px;}
   line-height: 1;
   padding: 5px;
   position: absolute;
-  right: 25px;
+  right: 70px;
   top: 0;
 }
+.col-lg-1  .poper,
+.col-lg-2  .poper{
+	right:20px;
+}
+.col-lg-1  .poper span, .col-lg-1 .remove-col span,
+.col-lg-2  .poper span, .col-lg-2  .remove-col span{
+	font-size:0px;
+}
+
+.poper, .remove-col{font-size:12px;}
 .border-dash .remove-col {
   background: none repeat scroll 0 0 transparent;
   border-radius: 0;
@@ -163,7 +173,16 @@ introtext{font-size:14px;}
   line-height: normal;
 }
 .nav-pills > li + li{margin:0px;}
-.nav-addons > li {width:195px;float:left;}
+.nav-addons > li {
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.3);
+  float: left;
+  line-height: 30px;
+  margin-right: 10px;
+  width: 185px;
+}
+.nav-addons > li input {
+  margin: 0;
+}
 .modal.in{top:30px;}
 .modal-body label {
   cursor: pointer;
@@ -241,17 +260,17 @@ introtext{font-size:14px;}
 }
 
 .left:before {
-  content: "Adv Left Banners";
+  content: "Left Sidebar";
   font-size: 12px;
   font-style: italic;
   left: 0;
   position: absolute;
   text-transform: capitalize;
   top: -5px;
-  z-index: 9999;
+  z-index: 999;
 }
 .right:before {
-  content: "Adv Right Banners";
+  content: "Right Sidebar";
   font-size: 12px;
   font-style: italic;
   position: absolute;
@@ -262,11 +281,18 @@ introtext{font-size:14px;}
 }
 .form-group{margin:0px!important;}
 #block_list li {
-	border: 1px solid #ccc;
-    border-radius: 5px;
+	border: 1px solid #428bca;
+    border-radius: 0px;
     margin: 5px 0;
     padding: 0;
 }
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  background-color: #428bca;
+  color: #fff;
+  font-weight: bold;
+  outline:none;
+}
+.nav-pills > li  > a{border-radius:0px;}
 #block_list li .glyphicon {
 	display: none;
 }

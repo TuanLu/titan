@@ -30,7 +30,7 @@
 	  	<li><a href="#block_maincontent" data-toggle="pill"><?php echo $this->__("Main Content")?> <i class="pull-right glyphicon glyphicon-floppy-disk" aria-hidden="true"></i></a></li>
 	  	<li><a href="#block_after_main_content" data-toggle="pill"><?php echo $this->__("After Main Content")?> <i class="pull-right glyphicon glyphicon-floppy-disk" aria-hidden="true"></i></a></li>
 	  	<li><a href="#block_footer" data-toggle="pill"><?php echo $this->__("Footer")?> <i class="pull-right glyphicon glyphicon-floppy-disk" aria-hidden="true"></i></a></li>
-	  	<li><a href="#block_hidden-bottom" data-toggle="pill"><?php echo $this->__("Sticker/Hidden Bottom ")?> <i class="pull-right glyphicon glyphicon-floppy-disk" aria-hidden="true"></i></a></li>
+	  	<li><a href="#block_hidden-bottom" data-toggle="pill"><?php echo $this->__("Very Bottom ")?> <i class="pull-right glyphicon glyphicon-floppy-disk" aria-hidden="true"></i></a></li>
 	</ul>
 	<!-- End Left Navigation -->
 	<!--Controls Popup-->
@@ -51,7 +51,7 @@
 	<input type="hidden" id="baseurl" value="<?php echo $this->getBaseUrl(); ?>"/>
 	<input type="hidden" id="current_tab" value="<?php echo $this->getRequest()->getParam("tab") ?>"/>
 	<!-- ADD BLOCK IFRAME -->
-	<iframe id="add_block_iframe" src="<?php echo $this->getBaseUrl(); ?>titan/block/addBlock/new/yes/area/transforming" style="position: absolute; top: -100000px;"></iframe>
+	<iframe id="add_block_iframe" src="<?php echo $this->getBaseUrl(); ?>titan/block/addBlock/new/yes/area/transforming" style="position: absolute; top: -100000px;left:-99999px;"></iframe>
 </div>
 <script>
 //Fix conflict Prototype vs Bootstrap + jQuery

@@ -27,9 +27,9 @@ jQuery(function($) {
 		getPlaceholderContent : function(column) {
 			var divContent = new Array();
 			divContent.push('<div class="col-lg-' + column + ' border-dash">');
-			divContent.push('<p>Grid ('+ column +') </p>');
-			divContent.push('<a class="btn btn-default poper" data-toggle="modal" data-target=".bs-example-modal-lg" title="Settings"  ><i class="glyphicon glyphicon-cog"></i></a> ');
-			divContent.push('<a class="btn btn-default remove-col" data-toggle="tooltip" title="Remove Column"  ><i class="glyphicon glyphicon-remove-circle"></i></a>');
+			divContent.push('<p>'+ column +' col </p>');
+			divContent.push('<a class="btn btn-default poper" data-toggle="modal" data-target=".bs-example-modal-lg" title="Manage Snippets"  ><i class="glyphicon glyphicon-cog"></i> <span>Control</span></a> ');
+			divContent.push('<a class="btn btn-default remove-col" data-toggle="tooltip" title="Remove Sub Block"  ><i class="glyphicon glyphicon-remove-circle"></i> <span>Remove</span></a>');
 			divContent.push('</div>');
 			return divContent.join("");
 		},
@@ -144,7 +144,7 @@ jQuery(function($) {
 				element.children("p").remove();
 				//Create grid info for current column
 				// gridInfo.push('<p><span><i class="glyphicon glyphicon-move"></i></span>');
-				gridInfo.push('<p><span class="column-num">Grid ('+ column +')</span>');
+				gridInfo.push('<p><span class="column-num">'+ column +' col</span>');
 				if (customClass != "") {
 					gridInfo.push(' | ');
 					gridInfo.push('<span class="class-list">' + customClass.trim().split(" ").join(",") +'</span>');
@@ -366,8 +366,8 @@ jQuery(function($) {
 							divContent.push('<span class="class-list">' + blockDataClass.custom_class.trim().split(" ").join(",") +'</span>');
 					}
 					divContent.push("</p>");
-					divContent.push('<a class="btn btn-default poper" data-toggle="modal" data-target=".bs-example-modal-lg" title="Settings"  ><i class="glyphicon glyphicon-cog"></i></a> ');
-					divContent.push('<a class="btn btn-default remove-col" data-toggle="tooltip" title="Remove Column"  ><i class="glyphicon glyphicon-remove-circle"></i></a>');
+					divContent.push('<a class="btn btn-default poper" data-toggle="modal" data-target=".bs-example-modal-lg" title="Manage Snippets"  ><i class="glyphicon glyphicon-cog"></i> <span>Control</span></a> ');
+			divContent.push('<a class="btn btn-default remove-col" data-toggle="tooltip" title="Remove Sub Block"  ><i class="glyphicon glyphicon-remove-circle"></i> <span>Remove</span></a>');
 					//Append child-block here
 					$.each(childBlocks, function(cIndex, cValue) {
 						var childBlockInfo = JSON.parse(cValue);

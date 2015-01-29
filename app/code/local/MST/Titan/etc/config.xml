@@ -37,21 +37,21 @@
 	<adminhtml>
 		<menu>
             <titan module="titan">
-                <title>T2 Theme</title>
+                <title><![CDATA[T2 THEME]]></title>
                 <sort_order>71</sort_order>
                 <children>
                     <titan_layout module="titan">
-                        <title>Theme Transforming</title>
+                        <title>Layout Builder</title>
                         <sort_order>30</sort_order>
 						<action>titan/adminhtml_layout/index</action>
                     </titan_layout>
 					<titan_block module="titan">
-                        <title>Manage Add-ons Blocks</title>
+                        <title>Manage Snippets</title>
                         <sort_order>60</sort_order>
 						<action>titan/adminhtml_block/index</action>
                     </titan_block>
 					<setting module="titan">
-                        <title>Settings</title>
+                        <title>Configuration</title>
                         <sort_order>80</sort_order>
                         <action>adminhtml/system_config/edit/section/titan</action>
                     </setting>
