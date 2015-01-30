@@ -21,7 +21,15 @@ class MST_Titan_Model_Main extends Mage_Core_Model_Abstract
 		$model = $this->getModelObjectByDataBlock($dataBlock);
 		if ($model !== null) {
 			$collection = $model->getCollection();
-			return $collection->getLastItem()->getData();
+			if($collection->count()) {
+				return $collection->getLastItem()->getData();
+			} 
+			return array (
+				'title' => '',
+				'config' => null,
+				'description' => '',
+				'width_config' => ''
+			);
 		}
 	}
 	public function getModelObjectByDataBlock($dataBlock) {
