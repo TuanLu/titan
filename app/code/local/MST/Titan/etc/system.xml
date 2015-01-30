@@ -72,6 +72,16 @@
 							<show_in_store>1</show_in_store>
                             <depends><logo_type>text</logo_type></depends>
                     	</logo_text>
+						<logo_alt translate='label'>
+                    		<label>Logo Alt</label>
+                    		<frontend_type>text</frontend_type>
+                    		<sort_order>395</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <depends><logo_type>image</logo_type></depends>
+                    	</logo_alt>
+						
 						<store_slogan translate='label'>
                     		<label>Store Slogan</label>
 							<comment>Leave empty to hide slogan</comment>
@@ -159,7 +169,7 @@
                     <show_in_website>1</show_in_website>
 					<show_in_store>1</show_in_store>
                     <fields>
-						<media_layout translate='label'>
+						<!-- <media_layout translate='label'>
                     		<label>Media Layout</label>
                     		<frontend_type>select</frontend_type>
                     		<sort_order>95</sort_order>
@@ -167,7 +177,7 @@
                             <show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
                             <source_model>titan/config_medialayout</source_model>
-                    	</media_layout>
+                    	</media_layout> -->
 						<large_image_width translate='label'>
                     		<label>Large Image WIDTH</label>
 							<comment>Large Image Width when Zoom in. Exmple: 1000.</comment>

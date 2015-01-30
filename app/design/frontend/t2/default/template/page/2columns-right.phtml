@@ -28,10 +28,7 @@
 /**
  * Template for Mage_Page_Block_Html
  */
-$config = $this->helper("titan/config");
 $maincontent = Mage::getModel('titan/main')->getBlockConfig('maincontent');
-/* Get Custom Configuration in Theme tabs > Customization */
-$customCfg = $config->getCustomizationConfig(); 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
@@ -39,38 +36,19 @@ $customCfg = $config->getCustomizationConfig();
 <?php echo $this->getChildHtml('head') ?>
 </head>
 <body <?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
-<?php 
-/* Insert custom code after <BODY> tag */
-echo $customCfg['after_body_open'];
-?>
 <?php echo $this->getChildHtml('after_body_start') ?>
 <?php echo $this->getChildHtml('top-bar') ?>
 <div class="t2-wrapper">
-	<div class="t2-page <?php echo $config->getThemeLayout(); ?>">
+	<div class="t2-page  <?php echo Mage::getStoreConfig('titan/general/theme_layout'); ?>">
 		<?php echo $this->getChildHtml('header') ?>
-		<?php if($this->getChildHtml('global_cookie_notice') ) { ?>
-		<div class="t2-section">
-			<div class="alert alert-warning fade in" role="alert">
-				<button class="close" data-dismiss="alert" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-			<?php echo $this->getChildHtml('global_notices') ?>
-			<?php echo $this->getChildHtml('global_cookie_notice') ?>
-			</div>
-		</div>		
-		<?php } ?>
 		<?php echo $this->getChildHtml('before_main_content') ?>
-		<?php $headerOffset = '';if($this->getChildHtml('before_main_content')==''){ $headerOffset = 'headerOffset';} ?>
-		<div class="<?php echo $maincontent['width_config'];echo ' '.$headerOffset; ?> " >
+		<div class="<?php echo $maincontent['width_config'];?> " >
 			<div class="t2-main-body" data-block="maincontent">
 				<div class="t2-layout two-col"><!--./ 2 columns Right -->
 					<div class="t2-container">
 						<?php echo $this->getChildHtml('breadcrumbs') ?>
 						<div class="col-lg-9 col-md-9 col-sm-12">
-							<?php if($this->getChildHtml('global_messages')) { ?>
-							<div class="alert alert-warning fade in" role="alert">
-								<button class="close" data-dismiss="alert" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-							<div class="t2-message"><?php echo $this->getChildHtml('global_messages') ?></div>
-							</div>
-							<?php } ?>
+							<?php echo $this->getChildHtml('titan_messages') ?>
 							<div class="t2-content"  data-block='content'>
 								<?php echo $this->getChildHtml('content') ?>
 							</div>
@@ -86,14 +64,10 @@ echo $customCfg['after_body_open'];
 		</div>
 		<?php echo $this->getChildHtml('after_main_content') ?>
 		<?php echo $this->getChildHtml('footer') ?>
-		<?php echo $this->getChildHtml('sticker') ?>
 	</div>
 </div>
 <?php echo $this->getChildHtml('before_body_end') ?>
 <?php echo $this->getAbsoluteFooter() ?>
-<?php 
-/* Insert custom code before </BODY> tag */
-echo $customCfg['before_body_close'];
-?>
+<?php echo $this->getChildHtml('veryBottom') ?>
 </body>
 </html>

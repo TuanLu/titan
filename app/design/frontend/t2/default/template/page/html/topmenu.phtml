@@ -33,8 +33,8 @@
 ?>
 <?php 
 /* Get Theme tab > Navigation Configuration */
-$navigationConfig = Mage::helper("titan/config")->getNavigationConfig();
-$type = $navigationConfig['menu_type'];
+$type = Mage::getStoreConfig('titan/genavigationeral/main_menu');
+$if_mcp_group = Mage::getStoreConfig('titan/genavigationeral/mcp_group');
 ?>
 <?php if ($type =='default') { ?>
 	<?php $_menu = $this->getHtml('level-top') ?>
@@ -48,5 +48,5 @@ $type = $navigationConfig['menu_type'];
 	</ul>
 	<?php endif ?>
 <?php }else { ?>
-	<?php echo $this->getLayout()->createBlock("menupro/menu")->setGroup_id($navigationConfig['menu_group'])->setTemplate("menupro/menupro.phtml")->toHtml(); ?>
+	<?php echo $this->getLayout()->createBlock("menupro/menu")->setGroup_id($if_mcp_group)->setTemplate("menupro/menupro.phtml")->toHtml(); ?>
 <?php } ?>
