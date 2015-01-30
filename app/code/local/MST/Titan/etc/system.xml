@@ -52,7 +52,7 @@
                             <source_model>titan/config_logotype</source_model>
                     	</logo_type>
 						<logo_image translate='label'>
-                    		<label>Logo Icon</label>
+                    		<label>Logo Image</label>
                     		<frontend_type>image</frontend_type>
 							<backend_model>adminhtml/system_config_backend_image</backend_model>
 							<upload_dir config="system/filesystem/media" scope_info="1">titan/logo</upload_dir>
@@ -81,7 +81,7 @@
                             <show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
                     	</store_slogan>
-						<enable_top_bar translate='label'>
+						<!-- <enable_top_bar translate='label'>
                     		<label>Enable top bar</label>
                     		<frontend_type>select</frontend_type>
                     		<sort_order>595</sort_order>
@@ -90,7 +90,7 @@
                             <show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
-                    	</enable_top_bar>
+                    	</enable_top_bar> -->
 						<enable_setting_box translate='label'>
                     		<label>Enable setting box</label>
                     		<frontend_type>select</frontend_type>
@@ -112,18 +112,18 @@
 					<show_in_store>1</show_in_store>
                     <fields>
 						<show_sub translate='label'>
-                    		<label>Show sub categories</label>
+                    		<label>Auto show sub categories thumbnail</label>
                     		<frontend_type>select</frontend_type>
                     		<sort_order>95</sort_order>
-							<comment>Show sub categories thumbnails(image, title) below category description</comment>
+							<comment>Enable to show all sub categories thumbnails below category description</comment>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                     	</show_sub>
 						<product_per_row translate='label'>
-                    		<label>How many products per row</label>
-							<comment>Number of products per row on Gridview mode.</comment>
+                    		<label>Product items per row</label>
+							<comment>Number of products per row on Grid view mode.</comment>
                     		<frontend_type>select</frontend_type>
                     		<sort_order>195</sort_order>
                             <show_in_default>1</show_in_default>
@@ -132,8 +132,8 @@
                             <source_model>titan/config_productperrow</source_model>
                     	</product_per_row>
 						<image_width translate='label'>
-                    		<label>Item image WIDTH</label>
-							<comment>Product image width (pixel). Example: 250.</comment>
+                    		<label>Product Thumbnail WIDTH</label>
+							<comment>Product thumbnail image width (pixel). Example: 250.</comment>
                     		<frontend_type>text</frontend_type>
                     		<sort_order>295</sort_order>
                             <show_in_default>1</show_in_default>
@@ -141,8 +141,8 @@
 							<show_in_store>1</show_in_store>
                     	</image_width>
 						<image_height translate='label'>
-                    		<label>Item image HEIGHT</label>
-							<comment>Product image height (pixel). Example: 250.</comment>
+                    		<label>Product Thumbnail HEIGHT</label>
+							<comment>Product thumbnail image height (pixel). Example: 250.</comment>
                     		<frontend_type>text</frontend_type>
                     		<sort_order>395</sort_order>
                             <show_in_default>1</show_in_default>
@@ -152,7 +152,7 @@
                     </fields>
                 </category>
 				<product translate="label">
-                    <label>Product Page Settings</label>
+                    <label>Product Details Settings</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>250</sort_order>
                     <show_in_default>1</show_in_default>
@@ -205,7 +205,7 @@
 							<show_in_store>1</show_in_store>
                     	</main_image_height>
 						<product_info translate='label'>
-                    		<label>Product Informations Display Type</label>
+                    		<label>Details in Layout Type</label>
                     		<frontend_type>select</frontend_type>
                     		<sort_order>595</sort_order>
                             <show_in_default>1</show_in_default>
@@ -233,7 +233,7 @@
                             <source_model>titan/config_defaultmenu</source_model>
                     	</main_menu>
 						<mcp_group translate='label'>
-                    		<label>Menu group as default</label>
+                    		<label>Choose default menu group</label>
                     		<frontend_type>select</frontend_type>
                     		<sort_order>195</sort_order>
                             <show_in_default>1</show_in_default>
@@ -241,8 +241,9 @@
 							<show_in_store>1</show_in_store>
                             <source_model>titan/config_mcpgroup</source_model>
 							<depends><main_menu>mcp</main_menu></depends>
+							<comment>Group list from MenuPro > Groups > Manage Groups.</comment>
                     	</mcp_group>
-						<custom_class translate='label'>
+						<!-- <custom_class translate='label'>
                     		<label>Custom Class</label>
                     		<frontend_type>text</frontend_type>
                     		<sort_order>295</sort_order>
@@ -250,10 +251,10 @@
                             <show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
 							<depends><main_menu>default</main_menu></depends>
-                    	</custom_class>
+                    	</custom_class> -->
                     </fields>
                 </navigation>
-				<customization translate="label">
+				<!-- <customization translate="label">
                     <label>Customization Settings</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>450</sort_order>
@@ -298,7 +299,7 @@
                             <comment>Example Insert live chat code from Comm100, Zopim, Livechat ..</comment>
                     	</before_body_close>
                     </fields>
-                </customization>
+                </customization> -->
 			</groups>
 		</titan>
 	</sections>
