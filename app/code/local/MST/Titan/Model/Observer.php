@@ -26,15 +26,17 @@ class MST_Titan_Model_Observer extends Varien_Object
 	}
 	public function updateHeaderAndFooterCustomLayout($dataBlock) {
 		$blockConfig = $this->_titanBlock->getHeaderOrFooterBlock($dataBlock);
-		foreach($blockConfig as $rootBlocks) {
-			if (is_array($rootBlocks)) {
-				foreach($rootBlocks as $gridColumn) {
-					if (isset($gridColumn['child_blocks'])) {
-						foreach($gridColumn['child_blocks'] as $childBlock) {
-							$blockDetails = json_decode($childBlock, true);
-							if($blockDetails['type'] == "static_block") continue;
-							$newBlockInfo = Mage::getModel("titan/titanblock")->load($blockDetails["id"])->getData();
-							$this->updateLayout($newBlockInfo);
+		if(is_array($blockConfig)) {
+			foreach($blockConfig as $rootBlocks) {
+				if (is_array($rootBlocks)) {
+					foreach($rootBlocks as $gridColumn) {
+						if (isset($gridColumn['child_blocks'])) {
+							foreach($gridColumn['child_blocks'] as $childBlock) {
+								$blockDetails = json_decode($childBlock, true);
+								if($blockDetails['type'] == "static_block") continue;
+								$newBlockInfo = Mage::getModel("titan/titanblock")->load($blockDetails["id"])->getData();
+								$this->updateLayout($newBlockInfo);
+							}
 						}
 					}
 				}
@@ -43,15 +45,17 @@ class MST_Titan_Model_Observer extends Varien_Object
 	}
 	public function updateOutsideContentCustomLayout($dataBlock) {
 		$config = $this->_titanBlock->getOutsideMainContentBlock($dataBlock);
-		foreach ($config['block_config'] as $gridColumns) {
-			if(is_array($gridColumns)) {
-				foreach($gridColumns as $childBlock) {
-					if(isset($childBlock['child_blocks'])) {
-						foreach($childBlock['child_blocks'] as $childBlock) {
-							$blockDetails = json_decode($childBlock, true);
-							if($blockDetails['type'] == "static_block") continue;
-							$newBlockInfo = Mage::getModel("titan/titanblock")->load($blockDetails["id"])->getData();
-							$this->updateLayout($newBlockInfo);
+		if (is_array($config)) {
+			foreach ($config['block_config'] as $gridColumns) {
+				if(is_array($gridColumns)) {
+					foreach($gridColumns as $childBlock) {
+						if(isset($childBlock['child_blocks'])) {
+							foreach($childBlock['child_blocks'] as $childBlock) {
+								$blockDetails = json_decode($childBlock, true);
+								if($blockDetails['type'] == "static_block") continue;
+								$newBlockInfo = Mage::getModel("titan/titanblock")->load($blockDetails["id"])->getData();
+								$this->updateLayout($newBlockInfo);
+							}
 						}
 					}
 				}
