@@ -9,7 +9,7 @@ class MST_Titan_Block_Adminhtml_Titanblock_Edit_Tab_Form extends Mage_Adminhtml_
         
         
         $fieldset->addField('title', 'text', array(
-            'label' => Mage::helper('titan')->__('Block Title'),
+            'label' => Mage::helper('titan')->__('Snippet Title'),
             'class' => 'required-entry',
             'required' => true,
             'name' => 'title',

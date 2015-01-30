@@ -31,7 +31,7 @@ if ($this->getRequest()->getParam("id")) {
 	.main-cols .form-list label  {
 	  color: rgb(235, 94, 0);
 	  font-size: 16px;
-	  text-transform: uppercase;
+	  text-transform: capitalize;
 	}
 	.main-cols .form-list p.note {
 	  color: rgb(69, 69, 69);
@@ -46,7 +46,8 @@ if ($this->getRequest()->getParam("id")) {
 	  max-height: 120px;
 	  width: 280px;
 	}
-	.main-cols  .form-list td.value input.input-text,.main-cols   .form-list td.value textarea,.main-cols  .form-list td.value select {color:green;}
+	.main-cols  .form-list td.value input.input-text,.main-cols   .form-list td.value textarea,.main-cols  .form-list td.value select {color:rgba(0, 0, 0, 0.9);}
+	.main-cols  .form-list td.value input.input-text:focus{color:red;}
 	<?php if (isset($params['area'])) : ?>
 	body {
 		padding: 0px 45px;
@@ -61,7 +62,7 @@ if ($this->getRequest()->getParam("id")) {
 		<div class="content-header">
 			<h3 class="icon-head head-adminhtml-titanblock">
 				<?php if ($formData['id'] == NULL) : ?>
-				<?php echo $this->__("Add New Block"); ?>
+				<?php echo $this->__("New Snippet"); ?>
 				<?php else : ?>
 				Edit "<?php echo $formData['title']; ?>"
 				<?php endif; ?>
@@ -71,7 +72,7 @@ if ($this->getRequest()->getParam("id")) {
 					<span><span><span>Reset</span></span></span>
 				</button>
 				<button style="" onclick="editForm.submit();" class="scalable save" type="button" title="Save Block">
-					<span><span><span>Save Block</span></span></span>
+					<span><span><span>SAVE</span></span></span>
 				</button>
 				<?php if (isset($params['area']) && $params['area'] == "transforming") :?>
 				<button class="scalable close-iframe" type="button" title="Close">
@@ -96,60 +97,56 @@ if ($this->getRequest()->getParam("id")) {
 						</div>
 						<div id="titanblock_form" class="fieldset ">
 							<div class="hor-scroll">
-								<p>Example Block Properties: <span class="note"><i><?php echo htmlentities('<block TYPE="page/html_topmenu" NAME="catalog.topnav" TEMPLATE="page/html/topmenu.phtml"/>') ?></i></span></p>
+								<p>We defined <strong style="color: red;">snippet</strong> is block template in XML, which you will find properties below. <br/>For example: <span class="note"><i><?php echo htmlentities('<block type="page/html_topmenu" name="catalog.topnav" template="page/html/topmenu.phtml"/>') ?></i></span></p>
 								<hr/>
 								<table cellspacing="0" class="form-list" style="width:100%;">
 									<tbody>
 										<tr>
-											<td WIDTH="50%">
+											<td WIDTH="50%" style="vertical-align: top;">
 											<table>
-											<tr><td><label for="title">Block Title <span
-													class="required">*</span></label></td></tr>
-												<tr><td class="value"><input type="text"
+											<tr>
+												<td style="text-align:left;" class="label"><label for="title">Snippet Title <span
+													class="required">*</span></label></td>
+												<td class="value"><input type="text"
 												class="required-entry input-text required-entry" value="<?php echo (isset($formData['title'])) ? $formData['title'] : ""; ?>"
 												name="title" id="title"></td>
-												</tr>
-												<tr><td class="label"><label for="block_type">Block Type</label></td></tr>
-												<tr><td class="value"><input type="text" class=" input-text"
-														value="<?php echo (isset($formData['block_type'])) ? $formData['block_type'] : ""; ?>" name="block_type" id="block_type">
+											</tr>
+											<tr>
+												<td class="label" style="text-align:left;"><label for="block_type">Block Type</label></td>
+												<td class="value"><input type="text" class=" input-text"
+														value="<?php echo (isset($formData['block_type'])) ? $formData['block_type'] : ""; ?>" name="block_type" id="block_type" placeholder="core/template" >
 														<p class="note">
 															<span>Eg: page/html_topmenu. <br/>Leave empty for default type: <strong>core/template</strong></span>
 														</p>
-													</td></tr>
-												<tr><td class="label"><label for="block_name">Block Name</label></td></tr>
-												<tr><td class="value"><input type="text" class=" input-text"
+													</td>
+											</tr>
+											<tr>
+												<td class="label" style="text-align:left;"><label for="block_name">Block Name</label></td>
+												<td class="value"><input type="text" class=" input-text"
 														value="<?php echo (isset($formData['block_name'])) ? $formData['block_name'] : ""; ?>" name="block_name" id="block_name">
 														<p id="note_block_name" class="note"><span>Eg: <strong>catalog.topnav</strong></span></p>
-													</td></tr>
-												<tr><td class="label"><label for="path">Template File Path</label></td></tr>
-												<tr><td class="value"><input type="text"
+													</td>
+											</tr>
+											<tr>
+												<td class="label" style="text-align:left;"><label for="path">Template File Path</label></td>
+												<td class="value"><input type="text"
 														class=" input-text" value="<?php echo (isset($formData['path'])) ? $formData['path'] : ""; ?>" name="path"
 														id="path">
 														<p id="note_path" class="note">
 															<span>Eg: <strong>page/html/topmenu.phtml</strong></span>
-														</p></td></tr>
+														</p></td>
+											</tr>
+											<tr>
+													<td class="label"><label for="position">Position</label></td>
+													<td class="value"><input type="text" class="input-text validate-number"
+														value="<?php echo (isset($formData['position'])) ? $formData['position'] : ""; ?>" name="position" id="position"></td>
+												</tr>
 												</table>
 											</td>
 											<td WIDTH="50%">
 												<table>
-												<tr><td class="label"><label for="group_id">Recommend Positions</label></td></tr>
-												<tr><td class="value"><select multiple="multiple" class="multiselect" size="8" name="group_id[]"
-														id="group_id">
-															<?php $groups = Mage::getModel("titan/titanblock")->getBlockGroup() ?>
-															<?php 
-															$selectedGroup = array();
-															if (isset($formData['group_id'])) {
-																$selectedGroup = explode(",", $formData['group_id']);
-															}
-															?>
-															<?php foreach ($groups as $id => $groupTitle) : ?>
-															<option <?php echo (in_array($id, $selectedGroup) ) ? "selected='selected'" : ""; ?> value="<?php echo $id ?>"><?php echo $this->__($groupTitle) ?></option>
-															<?php endforeach; ?>
-													</select></td>
-												</tr>
 												<tr><td class="label"><label for="group_id">Store View <span
-													class="required">*</span></label></td></tr>
-												<tr>
+													class="required">*</span></label></td>
 													<td class="value">
 														<?php 
 														$store_info = Mage::getSingleton('adminhtml/system_store')->getStoreValuesForForm(false, true); 
@@ -177,15 +174,24 @@ if ($this->getRequest()->getParam("id")) {
 														</select>
 													</td>
 												</tr>
-												<tr><td class="label"><label for="position">Position</label></td></tr>
-												<tr><td class="value"><input type="text" class="input-text validate-number"
-														value="<?php echo (isset($formData['position'])) ? $formData['position'] : ""; ?>" name="position" id="position"></td></tr>
-												<tr><td class="label"><label for="status">Status</label></td></tr>
-												<tr><td class="value"><select class=" select" name="status"
-														id="status">
-															<option <?php echo (isset($formData['status']) && $formData['status'] == "1" ) ? "selected='selected'" : ""; ?> value="1">Enabled</option>
-															<option <?php echo (isset($formData['status']) && $formData['status'] == "2" ) ? "selected='selected'" : ""; ?> value="2">Disabled</option>
-													</select></td></tr>
+												<tr>
+													<td class="label"><label for="group_id">Recommend Positions</label></td>
+													<td class="value"><select multiple="multiple" class="multiselect" size="8" name="group_id[]"
+														id="group_id">
+															<?php $groups = Mage::getModel("titan/titanblock")->getBlockGroup() ?>
+															<?php 
+															$selectedGroup = array();
+															if (isset($formData['group_id'])) {
+																$selectedGroup = explode(",", $formData['group_id']);
+															}
+															?>
+															<?php foreach ($groups as $id => $groupTitle) : ?>
+															<option <?php echo (in_array($id, $selectedGroup) ) ? "selected='selected'" : ""; ?> value="<?php echo $id ?>"><?php echo $this->__($groupTitle) ?></option>
+															<?php endforeach; ?>
+													</select></td>
+												</tr>
+												
+												
 												</table>
 											</td>
 										</tr>
@@ -203,33 +209,45 @@ if ($this->getRequest()->getParam("id")) {
 						</div>
 						<div id="titanblock_form" class="fieldset ">
 							<div class="hor-scroll">
-								<table cellspacing="0" class="form-list">
+								<table cellspacing="0" class="form-list" style="width:100%;">
 									<tbody>
 										<tr>
-											<td class="label"><label for="custom_layout_update">Custom Layout Update</label></td>
-											<td class="value">
-												<textarea id="custom_layout_update" class="textarea" name="custom_layout_update" style="height: 65px; width: 555px;"><?php echo (isset($formData['custom_layout_update'])) ? $formData['custom_layout_update'] : ""; ?></textarea>
-												<p class="note">
-												<span>Enter XML Code to include custom script/styles needed<br/>
-												Eg: <br/>
-												&lt;reference name="extra_js"&gt;<br/>
-												&lt;action method="addItem"&gt;&lt;type&gt;skin_js&lt;/type&gt;&lt;name&gt;assets/js/home.js&lt;/name&gt;&lt;/action&gt;<br/>	
-												&lt;/reference&gt;</span>
-												</p>
+											<td width="50%">
+												<table>
+													<tr>
+														<td class="label"><label for="custom_layout_update">Layout Update XML</label></td>
+														<td class="value">
+															<textarea id="custom_layout_update" class="textarea" name="custom_layout_update" style="height: 65px;"><?php echo (isset($formData['custom_layout_update'])) ? $formData['custom_layout_update'] : ""; ?></textarea>
+															<p class="note">
+															Example: <br/>
+															&lt;reference name="extra_js"&gt;<br/>
+															&nbsp;&lt;action method="addItem"&gt;<br/>
+															&nbsp;&nbsp;&lt;type&gt;skin_js&lt;/type&gt;<br/>
+															&nbsp;&nbsp;&lt;name&gt;assets/js/home.js&lt;/name&gt;<br/>
+															&nbsp;&lt;/action&gt;<br/>	
+															&lt;/reference&gt;</span>
+															</p>
+														</td>
+													</tr>
+												</table>
 											</td>
-										</tr>
-										<tr>
-											<td class="label"><label for="block_params">Params</label></td>
-											<td class="value">
-												<textarea id="block_params" class="textarea" name="description" style="height: 65px; width: 555px;"><?php echo (isset($formData['description'])) ? $formData['description'] : ""; ?></textarea>
-												<p class="note">
-												<span>Pass params from block to template.<br/>
-												Eg: 
-												<b>{"product_id" : "10", "category_id" : "5", "menu_group" : "1"}</b>
-												<br/> (JSON format) 
-												</span>
-												</p>
+											<td width="50%" style="vertical-align:top;">
+												<table>
+													<tr>
+														<td class="label"><label for="block_params">Advanced Params</label></td>
+														<td class="value">
+															<textarea id="block_params" class="textarea" name="description" style="height: 65px; " placeholder='Example {"category_id" : "5"}'><?php echo (isset($formData['description'])) ? $formData['description'] : ""; ?></textarea>
+															<p class="note">
+															Syntax: <b>{"param_1" : "value1", "param_2" : "value2", ..}</b>
+															<br/>
+															Result (XML): <br/><?php echo htmlentities('<block type="..." name="..." param_name=value ... />') ?>
+															</span>
+															</p>
+														</td>
+													</tr>
+												</table>
 											</td>
+											
 										</tr>
 									</tbody>
 								</table>

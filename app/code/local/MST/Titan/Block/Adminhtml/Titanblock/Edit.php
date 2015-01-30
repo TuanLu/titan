@@ -9,8 +9,8 @@ class MST_Titan_Block_Adminhtml_Titanblock_Edit extends Mage_Adminhtml_Block_Wid
         $this->_blockGroup = 'titan';
         $this->_controller = 'adminhtml_titanblock';
 
-        $this->_updateButton('save', 'label', Mage::helper('titan')->__('Save Block'));
-        $this->_updateButton('delete', 'label', Mage::helper('titan')->__('Delete Block'));
+        $this->_updateButton('save', 'label', Mage::helper('titan')->__('SAVE'));
+        $this->_updateButton('delete', 'label', Mage::helper('titan')->__('Delete Snippet'));
 
         $this->_addButton('saveandcontinue', array(
             'label' => Mage::helper('adminhtml')->__('Save And Continue Edit'),
@@ -43,9 +43,9 @@ class MST_Titan_Block_Adminhtml_Titanblock_Edit extends Mage_Adminhtml_Block_Wid
     public function getHeaderText()
     {
         if (Mage::registry('titan_block_data') && Mage::registry('titan_block_data')->getId()) {
-            return Mage::helper('titan')->__("Edit block '%s'", $this->htmlEscape(Mage::registry('titan_block_data')->getTitle()));
+            return Mage::helper('titan')->__("Edit Snippet '%s'", $this->htmlEscape(Mage::registry('titan_block_data')->getTitle()));
         } else {
-            return Mage::helper('titan')->__('Add New Block');
+            return Mage::helper('titan')->__('New Snippet');
         }
     }
 }

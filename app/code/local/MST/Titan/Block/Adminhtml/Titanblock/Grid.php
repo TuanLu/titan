@@ -21,7 +21,7 @@ class MST_Titan_Block_Adminhtml_Titanblock_Grid extends Mage_Adminhtml_Block_Wid
 		) );
 		
 		$this->addColumn ( 'title', array (
-			'header' => Mage::helper ( 'titan' )->__ ( 'Title' ),
+			'header' => Mage::helper ( 'titan' )->__ ( 'Snippet Title' ),
 			'align' => 'left',
 			'index' => 'title' 
 		) );
