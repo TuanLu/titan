@@ -13,10 +13,10 @@
 		</div>
 		<div class="col-md-4">
 			<div class="pull-right">
-				<a id="reset" class="btn btn-warning btn-sm" onclick="location.reload();"><i class="glyphicon glyphicon-refresh"></i> <?php echo $this->__("Reset")?></a>
-				<a id="add_titan_block" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-plus"></i> <?php echo $this->__("Add Block")?></a>
-				<a class="btn btn-info btn-sm btn-preview"><i class="glyphicon glyphicon-eye-open"></i> <?php echo $this->__("Preview")?> </a>
-	 			<a id="save_all_config" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> <?php echo $this->__("Save")?></a>
+				<a id="reset" class="btn btn-default btn-xs" onclick="location.reload();"><i class="glyphicon glyphicon-refresh"></i> <?php echo $this->__("Reset")?></a>
+	 			<a id="add_titan_block" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-plus"></i> <?php echo $this->__(" New Snippet")?></a>
+				<a class="btn btn-info btn-xs btn-preview"><i class="glyphicon glyphicon-eye-open"></i> <?php echo $this->__("PREVIEW")?> </a>
+				<a id="save_all_config" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-floppy-saved"></i> <?php echo $this->__("SAVE")?></a>
 			</div>
 		</div>
 	</div>
@@ -24,10 +24,11 @@
 <div id="wrapper">
 	<!-- Left Navigation -->
 	<ul id="block_list" class="nav nav-pills nav-stacked col-md-2">
+	  	<li  class="active"><a href="#getstartedtitan" data-toggle="pill"><?php echo $this->__("Getting Started")?> <i class="pull-right glyphicon glyphicon-floppy-disk" aria-hidden="true"></i></a></li>
 	  	<li><a href="#block_hidden-top" data-toggle="pill"><?php echo $this->__("Top Bar")?> <i class="pull-right glyphicon glyphicon-floppy-disk" aria-hidden="true"></i></a></li>
-	  	<li class="active"><a href="#block_header" data-toggle="pill"><?php echo $this->__("Header")?> <i class="pull-right glyphicon glyphicon-floppy-disk" aria-hidden="true"></i></a></li>
+	  	<li><a href="#block_header" data-toggle="pill"><?php echo $this->__("Header")?> <i class="pull-right glyphicon glyphicon-floppy-disk" aria-hidden="true"></i></a></li>
 	  	<li><a href="#block_before_main_content" data-toggle="pill"><?php echo $this->__("Before Main Content")?> <i class="pull-right glyphicon glyphicon-floppy-disk" aria-hidden="true"></i></a></li>
-	  	<li><a href="#block_maincontent" data-toggle="pill"><?php echo $this->__("Main Content")?> <i class="pull-right glyphicon glyphicon-floppy-disk" aria-hidden="true"></i></a></li>
+	  	<li><a href="#block_maincontent" data-toggle="pill"><?php echo $this->__("Sidebar")?> <i class="pull-right glyphicon glyphicon-floppy-disk" aria-hidden="true"></i></a></li>
 	  	<li><a href="#block_after_main_content" data-toggle="pill"><?php echo $this->__("After Main Content")?> <i class="pull-right glyphicon glyphicon-floppy-disk" aria-hidden="true"></i></a></li>
 	  	<li><a href="#block_footer" data-toggle="pill"><?php echo $this->__("Footer")?> <i class="pull-right glyphicon glyphicon-floppy-disk" aria-hidden="true"></i></a></li>
 	  	<li><a href="#block_hidden-bottom" data-toggle="pill"><?php echo $this->__("Very Bottom ")?> <i class="pull-right glyphicon glyphicon-floppy-disk" aria-hidden="true"></i></a></li>
@@ -51,7 +52,7 @@
 	<input type="hidden" id="baseurl" value="<?php echo $this->getBaseUrl(); ?>"/>
 	<input type="hidden" id="current_tab" value="<?php echo $this->getRequest()->getParam("tab") ?>"/>
 	<!-- ADD BLOCK IFRAME -->
-	<iframe id="add_block_iframe" src="<?php echo $this->getBaseUrl(); ?>titan/block/addBlock/new/yes/area/transforming" style="position: absolute; top: -100000px;left:-99999px;"></iframe>
+	<iframe id="add_block_iframe" src="<?php echo $this->getBaseUrl(); ?>titan/block/addBlock/new/yes/area/transforming" style="position: fixed; top: -100000px;left:-99999px;"></iframe>
 </div>
 <script>
 //Fix conflict Prototype vs Bootstrap + jQuery

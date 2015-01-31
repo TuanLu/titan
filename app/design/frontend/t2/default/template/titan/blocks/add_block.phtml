@@ -97,7 +97,7 @@ if ($this->getRequest()->getParam("id")) {
 						</div>
 						<div id="titanblock_form" class="fieldset ">
 							<div class="hor-scroll">
-								<p>We defined <strong style="color: red;">snippet</strong> is block template in XML, which you will find properties below. <br/>For example: <span class="note"><i><?php echo htmlentities('<block type="page/html_topmenu" name="catalog.topnav" template="page/html/topmenu.phtml"/>') ?></i></span></p>
+								<p>We defined <strong style="color: red;">snippet</strong> is block content type, which you can define block fields below. <br/>For example: <span class="note"><i><?php echo htmlentities('<block type="page/html_topmenu" name="catalog.topnav" template="page/html/topmenu.phtml"/>') ?></i></span></p>
 								<hr/>
 								<table cellspacing="0" class="form-list" style="width:100%;">
 									<tbody>
@@ -219,8 +219,8 @@ if ($this->getRequest()->getParam("id")) {
 														<td class="value">
 															<textarea id="custom_layout_update" class="textarea" name="custom_layout_update" style="height: 65px;"><?php echo (isset($formData['custom_layout_update'])) ? $formData['custom_layout_update'] : ""; ?></textarea>
 															<p class="note">
-															Example: <br/>
-															&lt;reference name="extra_js"&gt;<br/>
+															Update external css/js/images of snippet. Example : <br/>
+															<span style="color:red;">&lt;reference name="extra_js"&gt;<br/>
 															&nbsp;&lt;action method="addItem"&gt;<br/>
 															&nbsp;&nbsp;&lt;type&gt;skin_js&lt;/type&gt;<br/>
 															&nbsp;&nbsp;&lt;name&gt;assets/js/home.js&lt;/name&gt;<br/>
@@ -238,7 +238,7 @@ if ($this->getRequest()->getParam("id")) {
 														<td class="value">
 															<textarea id="block_params" class="textarea" name="description" style="height: 65px; " placeholder='Example {"category_id" : "5"}'><?php echo (isset($formData['description'])) ? $formData['description'] : ""; ?></textarea>
 															<p class="note">
-															Syntax: <b>{"param_1" : "value1", "param_2" : "value2", ..}</b>
+															Syntax: <span style="color:red;"><b>{"param_1" : "value1", "param_2" : "value2", ..}</b></span>
 															<br/>
 															Result (XML): <br/><?php echo htmlentities('<block type="..." name="..." param_name=value ... />') ?>
 															</span>

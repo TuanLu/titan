@@ -30,6 +30,8 @@ introtext{font-size:14px;}
 }
 
 .poper, .remove-col{font-size:12px;}
+.left .poper,.right .poper{right:0px;}
+.left .remove-col,.right .remove-col{display:none;}
 .border-dash .remove-col {
   background: none repeat scroll 0 0 transparent;
   border-radius: 0;
@@ -259,25 +261,29 @@ introtext{font-size:14px;}
   width: 0;
 }
 
-.left:before {
+.left .border-dash:before {
   content: "Left Sidebar";
   font-size: 12px;
-  font-style: italic;
+  font-style: normal;
+  font-weight:bold;
   left: 0;
   position: absolute;
   text-transform: capitalize;
-  top: -5px;
-  z-index: 999;
+  top: -25px;
+  /* z-index: 999; */
+  color:green;
 }
-.right:before {
+.right .border-dash:before {
   content: "Right Sidebar";
   font-size: 12px;
-  font-style: italic;
+  font-style: normal;
+  font-weight:bold;
   position: absolute;
   right: 0;
   text-transform: capitalize;
   top: -25px;
-  z-index: 999;
+  /* z-index: 999; */
+  color:green;
 }
 .form-group{margin:0px!important;}
 #block_list li {

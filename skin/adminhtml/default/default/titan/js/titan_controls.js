@@ -360,7 +360,7 @@ jQuery(function($) {
 					var divContent = new Array(),
 						childBlocks = gridColumn.child_blocks;
 					divContent.push('<div class="' + gridColumn.custom_class + '">');
-					divContent.push('<p>Grid ('+ blockDataClass.column +')');
+					divContent.push('<p>'+ blockDataClass.column +' col');
 					if (blockDataClass.custom_class != "") {
 							divContent.push(' | ');
 							divContent.push('<span class="class-list">' + blockDataClass.custom_class.trim().split(" ").join(",") +'</span>');

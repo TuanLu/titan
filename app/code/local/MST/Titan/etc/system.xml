@@ -33,6 +33,16 @@
 							<show_in_store>1</show_in_store>
                             <source_model>titan/config_layout</source_model>
                     	</theme_layout>
+						<theme_width translate="label">
+							<label>Custom width (pixel)</label>
+							<comment>Example : 980px</comment>
+                    		<frontend_type>text</frontend_type>
+                    		<sort_order>96</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><theme_layout>custom</theme_layout></depends>
+						</theme_width>
 						<theme_style translate='label'>
                     		<label>Default Theme Style</label>
                     		<frontend_type>select</frontend_type>
