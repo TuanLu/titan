@@ -25,7 +25,7 @@
 			<action method="addItem"><type>skin_js</type><name>titan/js/bootstrap-select.js</name></action>
 			<action method="addItem"><type>skin_js</type><name>titan/js/bootstrap-modal-popover.js</name></action>
 			<action method="addItem"><type>skin_js</type><name>titan/js/jquery.placeholder.js</name></action>
-			<action method="addItem"><type>skin_js</type><name>titan/js/application.js.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>titan/js/application.js</name></action>
 			<action method="addItem"><type>skin_js</type><name>titan/js/titan_controls.js</name></action>
         </reference>
 		<reference name="content">
