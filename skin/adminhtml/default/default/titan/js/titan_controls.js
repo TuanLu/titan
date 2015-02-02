@@ -45,7 +45,7 @@ jQuery(function($) {
 				MBTitan.enabledSortChildBlock();
 				$('.bs-example-modal-lg').modal('hide');
 				MBTitan.unSave(e);
-				MBTitan.isAllConfigSaved();
+				//MBTitan.isAllConfigSaved(); //Save immediately after press Apply
 			});
 		}(),
 		modalConfig : function() {
