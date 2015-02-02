@@ -1,11 +1,16 @@
 <form class="form-horizontal" role="form">	
 	<div class="tab-content col-md-10">
+		<div class="tab-pane active" id="getstartedtitan">
+			<div class="panel panel-info" data-block="hidden-top" >
+				<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('titan/container/layout/started.phtml')->toHtml() ?>
+			</div><!--./ GETTING STARTED -->
+		</div>
 		<div class="tab-pane" id="block_hidden-top">
 			<div class="panel panel-info" data-block="hidden-top" >
 				<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('titan/container/layout/topbar.phtml')->toHtml() ?>
 			</div><!--./ TOP BAR -->
 		</div>
-		<div class="tab-pane active" id="block_header">
+		<div class="tab-pane" id="block_header">
 			<div class="panel panel-info" data-block="header">
 				<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('titan/container/layout/header.phtml')->toHtml() ?>
 			</div><!-- HEADER -->
