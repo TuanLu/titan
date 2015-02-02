@@ -317,3 +317,6 @@ introtext{font-size:14px;}
 #mainLayout .panel-body .btn-group.pull-right .btn {
 	margin: 0px 2px;
 }
+.ui-sortable-helper{
+border: gold dashed 2px!important;
+}
